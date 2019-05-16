@@ -128,73 +128,73 @@ def get_datasets(symbol, to_symbol, histo, limit):
 
 #------------------------------------------------------------->
 
-# def init_data(pair, mode, limit, histo):
-#     """Tranform the data from pandas.DataFrame to list to improve Ray's performance
+def init_data(pair, mode, limit, histo):
+    """Tranform the data from pandas.DataFrame to list to improve Ray's performance
 
-#     Arguments:
-#         pair {str} -- Pair
-#         mode {str ['train', 'rollout]} -- Select the correct dataset,
-#         train or rollout one.
+    Arguments:
+        pair {str} -- Pair
+        mode {str ['train', 'rollout]} -- Select the correct dataset,
+        train or rollout one.
 
-#     Returns:
-#         list, list -- The dataframe divided in two lists
-#     """
-#     df = pd.read_csv('datasets/bot_{}_{}_{}_{}.csv'.format(mode, pair, limit, histo))
-#     df.drop('Date', axis=1, inplace=True)
-#     df_array = df.values.tolist()
-#     keys = df.keys()
-#     return keys, df_array
+    Returns:
+        list, list -- The dataframe divided in two lists
+    """
+    df = pd.read_csv('datasets/bot_{}_{}_{}_{}.csv'.format(mode, pair, limit, histo))
+    df.drop('Date', axis=1, inplace=True)
+    df_array = df.values.tolist()
+    keys = df.keys()
+    return keys, df_array
 
 
-# def build_layout(title, x_axis_title, y_axis_title):
-#     """Create the plotly's layout with custom configuration
+def build_layout(title, x_axis_title, y_axis_title):
+    """Create the plotly's layout with custom configuration
 
-#     Arguments:
-#         title {str} -- Layout's central title
-#         x_axis_title {str} -- Axis x title
-#         y_axis_title {str} -- Axis y title
+    Arguments:
+        title {str} -- Layout's central title
+        x_axis_title {str} -- Axis x title
+        y_axis_title {str} -- Axis y title
 
-#     Returns:
-#         Object -- Plotly object from plotly.graph_objs
-#     """
+    Returns:
+        Object -- Plotly object from plotly.graph_objs
+    """
 
-#     layout = go.Layout(plot_bgcolor='#2d2929',
-#                        paper_bgcolor='#2d2929',
-#                        title=title,
-#                        font=dict(color='rgb(255, 255, 255)', size=17),
-#                        legend=dict(orientation="h"),
-#                        yaxis=dict(title=y_axis_title),
-#                        xaxis=dict(title=x_axis_title))
-#     return layout
+    layout = go.Layout(plot_bgcolor='#2d2929',
+                       paper_bgcolor='#2d2929',
+                       title=title,
+                       font=dict(color='rgb(255, 255, 255)', size=17),
+                       legend=dict(orientation="h"),
+                       yaxis=dict(title=y_axis_title),
+                       xaxis=dict(title=x_axis_title))
+    return layout
 
-# def var_cov_matrix(df, weigths):
-#     """Compute covariance matrix with respect of given weigths
+def var_cov_matrix(df, weigths):
+    """Compute covariance matrix with respect of given weigths
 
-#     Arguments:
-#         df {pandas.DataFrame} -- The timeseries object
-#         weigths {list} -- List of weights to be used
+    Arguments:
+        df {pandas.DataFrame} -- The timeseries object
+        weigths {list} -- List of weights to be used
 
-#     Returns:
-#         numpy.array -- The covariance matrix
-#     """
+    Returns:
+        numpy.array -- The covariance matrix
+    """
 
-#     sigma = np.cov(np.array(df).T, ddof=0)
-#     var = (np.array(weigths) * sigma * np.array(weigths).T).sum()
-#     return var
+    sigma = np.cov(np.array(df).T, ddof=0)
+    var = (np.array(weigths) * sigma * np.array(weigths).T).sum()
+    return var
 
-# def calc_exp_returns(avg_return, weigths):
-#     """Compute the expected returns
+def calc_exp_returns(avg_return, weigths):
+    """Compute the expected returns
 
-#     Arguments:
-#         avg_return {pandas.DataFrame} -- The average of returns
-#         weigths {list} -- A list of weigths
+    Arguments:
+        avg_return {pandas.DataFrame} -- The average of returns
+        weigths {list} -- A list of weigths
 
-#     Returns:
-#         array -- N dimensions array
-#     """
+    Returns:
+        array -- N dimensions array
+    """
 
-#     exp_returns = avg_return.dot(weigths.T)
-#     return exp_returns
+    exp_returns = avg_return.dot(weigths.T)
+    return exp_returns
 
 
 
