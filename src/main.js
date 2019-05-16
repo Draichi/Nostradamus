@@ -28,7 +28,15 @@ new Vue({
   router,
   store,
   beforeCreate () {
-    this.$store.dispatch('loadDashboadData')
+    this.$store.dispatch('getTopCapCoins')
+    this.$store.dispatch('getTradingBotStats')
+    // this.$store.dispatch('getETHBTC')
+    // this.$store.dispatch('getXRPBTC')
+    // this.$store.dispatch('getEOSBTC')
+    // this.$store.dispatch('getLTCBTC')
   },
+  // mounted () {
+  //   this.$store.dispatch('sendProphetReq')
+  // },
   render: h => h(App)
 }).$mount('#app')

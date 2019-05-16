@@ -4,13 +4,13 @@ export default {
   loading (state) {
     return state.loading
   },
-  dataCompletedTasksChart (state) {
-    return state.dataCompletedTasksChart
+  symbolData (state) {
+    return state.symbolData
   },
-  dailySalesChart (state) {
-    return state.dailySalesChart
+  topCoinsTable (state) {
+    return state.topCoinsTable
   },
-  emailsSubscriptionChartGraph (state) {
-    return state.emailsSubscriptionChart
+  episodeRewardMax (state) {
+    return state.episodeRewardMax
   }
 }
