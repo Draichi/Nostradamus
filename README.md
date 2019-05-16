@@ -14,12 +14,14 @@ Deep tecnical analysis of cryptocurrencies with reinforcement learning
 
 ## Live
 
--   [Rolling Correlation](https://draichi.github.io/cryptocurrency_prediction/rolling_corr_DASH_2019-04-16.html)
--   [Spearman Correlation](https://draichi.github.io/cryptocurrency_prediction/correlation_spearman_2019-04-16.html)
--   [Portfolio Returns](https://draichi.github.io/cryptocurrency_prediction/returns_2019-04-16.html)
--   [Propheting 51 day(s) of ETH (Changepoint: 0.57)](https://draichi.github.io/cryptocurrency_prediction/prophet_2019-04-16_ETH.html)
--   [Weights per asset at different expected returns (%)](https://draichi.github.io/cryptocurrency_prediction/weights_2019-04-16.html)
--   [Risk associated with different levels of returns](https://draichi.github.io/cryptocurrency_prediction/efficient_frontier_2019-04-16.html)
+<!-- -   [Rolling Correlation](https://draichi.github.io/cryptocurrency_prediction/rolling_corr_DASH_2019-04-16.html) -->
+-   [Spearman Correlation](https://draichi.github.io/crypto_dashboard/correlation_spearman_2019-04-12.html)
+-   [Portfolio Returns](https://draichi.github.io/crypto_dashboard/returns_2019-04-12.html)
+-   [Prophet EOS](https://draichi.github.io/crypto_dashboard/prophet_2019-04-12_EOS.html)
+-   [Prophet ETH](https://draichi.github.io/crypto_dashboard/prophet_2019-04-12_ETH.html)
+-   [Prophet LTC](https://draichi.github.io/crypto_dashboard/prophet_2019-04-12_LTC.html)
+<!-- -   [Weights per asset at different expected returns (%)](https://draichi.github.io/cryptocurrency_prediction/weights_2019-04-16.html) -->
+<!-- -   [Risk associated with different levels of returns](https://draichi.github.io/cryptocurrency_prediction/efficient_frontier_2019-04-16.html) -->
 
 <div style="text-align:center">
   <img src="imgs/prophet.gif"/>
