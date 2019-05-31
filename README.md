@@ -76,8 +76,6 @@ python server.py
 
 
 ```sh
-cd app
-# go to /cryptocurrency_prediction/app
 yarn
 # or `npm i`
 yarn serve
