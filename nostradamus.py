@@ -2,25 +2,13 @@ import pandas as pd
 import numpy as np
 import plotly.graph_objs as go
 import plotly.offline as offline
-import json
 import fbprophet
 import os
-import ad
-import gzip
-import datetime
 import requests
-import talib
-from io import StringIO
-from urllib.parse import urlparse
 from termcolor import colored
-from scipy.optimize import minimize
-from plotly import tools
 from yaspin import yaspin
 from prompt_toolkit import HTML, print_formatted_text
 from prompt_toolkit.styles import Style
-
-# override print with feature-rich ``print_formatted_text`` from prompt_toolkit
-print = print_formatted_text
 
 # build a basic prompt_toolkit style for styling the HTML wrapped text
 style = Style.from_dict({
@@ -40,14 +28,11 @@ class Nostradamus:
         self.df = self.get_datasets()
 
     def prophet(self, forecast_days, changepoint_prior_scale=0.05):
-        ds = self.df['ds']
-        y = self.df['y']
         df = pd.DataFrame(self.df)
-        # ------------------------------------------------------------->
         df_prophet = fbprophet.Prophet(
-            changepoint_prior_scale=changepoint_prior_scale)
+            changepoint_prior_scale=changepoint_prior_scale,
+            daily_seasonality=True)
         df_prophet.fit(df)
-        # ------------------------------------------------------------->
         df_forecast = df_prophet.make_future_dataframe(
             periods=int(forecast_days))
         forecast = df_prophet.predict(df_forecast)
@@ -61,11 +46,11 @@ class Nostradamus:
             headers = {'User-Agent': 'Mozilla/5.0',
                        'authorization': 'Apikey {}'.format(self.api_key)}
             url = 'https://min-api.cryptocompare.com/data/histo{}?fsym={}&tsym={}&e={}&limit={}'.format(
-                self.histo, self.from_symbol, self.to_symbol, self.exchange, self.limit)
+                self.histo, self.from_symbol.upper(), self.to_symbol.upper(), self.exchange, self.limit)
             with yaspin(text='Downloading {}/{}'.format(self.from_symbol, self.to_symbol)) as sp:
                 response = requests.get(url, headers=headers)
                 sp.hide()
-                print(HTML(
+                print_formatted_text(HTML(
                     u'<b>></b> <msg>{} {} {}(s)</msg> <sub-msg>download complete</sub-msg>'.format(
                         self.from_symbol + self.to_symbol, self.limit, self.histo)
                 ), style=style)

@@ -1,94 +1,31 @@
-# Cryptocurrency prediction
-
-![ubuntu](https://img.shields.io/badge/ubuntu-supported-000.svg?colorA=00cc25&longCache=true&style=for-the-badge "ubuntu")
-![windows](https://img.shields.io/badge/windows-supported-000.svg?colorA=00cc25&longCache=true&style=for-the-badge "windows")
-![OS](https://img.shields.io/badge/OS-supported-000.svg?colorA=00cc25&longCache=true&style=for-the-badge "OS")
+# Nostradamus Price Forecaster
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/ebdf89dcba744a3c8aafdda210d3aeb6)](https://app.codacy.com/app/Draichi/cryptocurrency_prediction?utm_source=github.com&utm_medium=referral&utm_content=Draichi/cryptocurrency_prediction&utm_campaign=Badge_Grade_Dashboard)
 
-Deep tecnical analysis of cryptocurrencies with reinforcement learning
+Nonlinear and linear regression model implementation [(paper)](https://peerj.com/preprints/3190.pdf) that generate adaptative cryptocurrencys price forecasts
 
-<div style="text-align:center">
-  <img src="imgs/dashboard.gif"/>
-</div>
-
-## Live
-
-<!-- -   [Rolling Correlation](https://draichi.github.io/cryptocurrency_prediction/rolling_corr_DASH_2019-04-16.html) -->
--   [Spearman Correlation](https://draichi.github.io/crypto_dashboard/correlation_spearman_2019-04-12.html)
--   [Portfolio Returns](https://draichi.github.io/crypto_dashboard/returns_2019-04-12.html)
--   [Prophet EOS](https://draichi.github.io/crypto_dashboard/prophet_2019-04-12_EOS.html)
--   [Prophet ETH](https://draichi.github.io/crypto_dashboard/prophet_2019-04-12_ETH.html)
--   [Prophet LTC](https://draichi.github.io/crypto_dashboard/prophet_2019-04-12_LTC.html)
-<!-- -   [Weights per asset at different expected returns (%)](https://draichi.github.io/cryptocurrency_prediction/weights_2019-04-16.html) -->
-<!-- -   [Risk associated with different levels of returns](https://draichi.github.io/cryptocurrency_prediction/efficient_frontier_2019-04-16.html) -->
-
-<div style="text-align:center">
-  <img src="imgs/prophet.gif"/>
-</div>
-
-## Prerequisites
-
--   [Miniconda](https://conda.io/docs/user-guide/install/index.html) or Anaconda
--   [Node](https://nodejs.org/en/)
+<a href="https://plot.ly/~EnricoFermi/3.embed"><img src="assets/etcusdt.png"></a>
+<a href="https://plot.ly/~EnricoFermi/5.embed"><img src="assets/btcusdt.png"></a>
+<a href="https://plot.ly/~EnricoFermi/7.embed"><img src="assets/ethusdt.png"></a>
 
 ## Setup
 
->To use the portfolio funcions you must initiate the server :
-
-### Ubuntu
+You must get your free api key from cryptocompare.com
 
 ```sh
-sudo apt-get install gcc g++ build-essential python-dev python3-dev htop
-# make sure you have these installed
-conda env create -f UBUNTU_CPU.yml
-# create env
-conda activate crypto_prediction
-# activate it
-python server.py
-# init server at localhost:3030
+conda env create -f {YOUR_OS}_CPU.yml
 ```
 
-### Windows
+## Running
 
-```sh
-# make sure you have a recent C++ compiler
-conda env create -f WINDOWS_CPU.yml
-# create env
-conda activate crypto_prediction
-# activate it
-python server.py
-# init server at localhost:3030
+```python
+from nostradamus import Nostradamus
+
+env = Nostradamus(from_symbol='eth', to_symbol="USDT", histo="day",
+                  exchange="Binance", limit="250", api_key="xxx") # paste yout api key here
+
+env.prophet(changepoint_prior_scale=0.08, forecast_days=30)
 ```
-
-### Mac
-
-```sh
-conda env create -f MAC_CPU.yml
-# create env
-conda activate crypto_prediction
-# activate it
-python server.py
-# init server at localhost:3030
-```
-
->You can use the online [dashboard](https://draichi.github.io/cryptocurrency_prediction/index.html) or initiate yours:
-
-
-```sh
-yarn
-# or `npm i`
-yarn serve
-# or `npm run dev`
-```
-
-* * *
-
-
-## Credits
-
--   [Papers](https://github.com/Draichi/Portfolio-Management-list/blob/master/README.md)
--   [Analyzing cryptocurrency markets using python](https://blog.patricktriest.com/analyzing-cryptocurrencies-python/)
 
 * * *
 
