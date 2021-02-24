@@ -13,7 +13,9 @@ Nonlinear and linear regression model implementation [(paper)](https://peerj.com
 You must get your free api key from cryptocompare.com
 
 ```sh
-conda env create -f {YOUR_OS}_CPU.yml
+conda env create -f environment.yml
+
+conda activate nostradamus
 ```
 
 ## Running
@@ -27,7 +29,7 @@ env = Nostradamus(from_symbol='eth', to_symbol="USDT", histo="day",
 env.prophet(changepoint_prior_scale=0.08, forecast_days=30)
 ```
 
-* * *
+---
 
 <div style="text-align:center">
   <img src="https://img.shields.io/badge/fork_it,_fix_it-open_pull_request-101947.svg?colorA=104047&longCache=true&style=for-the-badge"/>

@@ -1,13 +1,12 @@
-name: crypto_prediction
+name: nostradamus
 channels:
   - quantopian
   - conda-forge
-  - terhorst
   - defaults
 dependencies:
+  - _libgcc_mutex=0.1=main
   - _tflow_select=2.3.0=mkl
   - absl-py=0.4.1=py35_0
-  - ad=1.3.2=py35_0
   - asn1crypto=0.24.0=py35_0
   - astor=0.7.1=py35_0
   - binutils_impl_linux-64=2.31.1=h6176602_1
@@ -109,6 +108,8 @@ dependencies:
   - six=1.11.0=py35_1
   - sqlite=3.26.0=h7b6447c_0
   - ta-lib=0.4.9=np114py35_0
+  - tbb=2020.2=hc9558a2_0
+  - tbb4py=2019.1=py35h6bb024c_1000
   - tensorboard=1.10.0=py35hf484d3e_0
   - tensorflow=1.10.0=mkl_py35heddcb22_0
   - tensorflow-base=1.10.0=mkl_py35h3c3e929_0
@@ -123,37 +124,42 @@ dependencies:
   - zlib=1.2.11=h7b6447c_3
   - zstd=1.3.7=h0b5b093_0
   - pip:
-    - atari-py==0.1.7
-    - atomicwrites==1.3.0
-    - attrs==19.1.0
-    - blessings==1.7
-    - click==7.0
-    - filelock==3.0.10
-    - flatbuffers==1.10
-    - funcsigs==1.0.2
-    - future==0.17.1
-    - gpustat==0.5.0
-    - gym==0.12.0
-    - h5py==2.9.0
-    - keras==2.2.4
-    - keras-applications==1.0.7
-    - keras-preprocessing==1.0.9
-    - lz4==2.1.6
-    - more-itertools==6.0.0
-    - nvidia-ml-py3==7.352.0
-    - pathlib2==2.3.3
-    - pillow==5.4.1
-    - pluggy==0.9.0
-    - psutil==5.6.1
-    - py==1.8.0
-    - py-spy==0.1.10
-    - pyglet==1.3.2
-    - pyopengl==3.1.0
-    - pytest==4.3.1
-    - pyyaml==3.13
-    - ray==0.6.4
-    - redis==3.2.1
-    - scipy==1.2.1
-    - setproctitle==1.1.10
-    - typing==3.6.6
-
+      - atari-py==0.1.7
+      - atomicwrites==1.3.0
+      - attrs==19.1.0
+      - autopep8==1.5.5
+      - blessings==1.7
+      - click==7.0
+      - filelock==3.0.10
+      - flatbuffers==1.10
+      - funcsigs==1.0.2
+      - future==0.17.1
+      - gpustat==0.5.0
+      - gym==0.12.0
+      - h5py==2.9.0
+      - keras==2.2.4
+      - keras-applications==1.0.7
+      - keras-preprocessing==1.0.9
+      - lz4==2.1.6
+      - more-itertools==6.0.0
+      - nvidia-ml-py3==7.352.0
+      - pathlib2==2.3.3
+      - pillow==5.4.1
+      - pluggy==0.9.0
+      - prompt-toolkit==2.0.10
+      - psutil==5.6.1
+      - py==1.8.0
+      - py-spy==0.1.10
+      - pycodestyle==2.6.0
+      - pyglet==1.3.2
+      - pyopengl==3.1.0
+      - pytest==4.3.1
+      - pyyaml==3.13
+      - ray==0.6.4
+      - redis==3.2.1
+      - scipy==1.2.1
+      - setproctitle==1.1.10
+      - toml==0.10.2
+      - typing==3.6.6
+      - wcwidth==0.2.5
+      - yaspin==1.4.0

@@ -24,10 +24,12 @@ class Nostradamus:
         self.histo = histo
         self.exchange = exchange
         self.limit = limit
+        self.changepoint_prior_scale = None
         self.api_key = api_key
         self.df = self.get_datasets()
 
     def prophet(self, forecast_days, changepoint_prior_scale=0.05):
+        self.changepoint_prior_scale = changepoint_prior_scale
         df = pd.DataFrame(self.df)
         df_prophet = fbprophet.Prophet(
             changepoint_prior_scale=changepoint_prior_scale,
@@ -45,8 +47,8 @@ class Nostradamus:
         if not os.path.exists(dataset_path):
             headers = {'User-Agent': 'Mozilla/5.0',
                        'authorization': 'Apikey {}'.format(self.api_key)}
-            url = 'https://min-api.cryptocompare.com/data/histo{}?fsym={}&tsym={}&e={}&limit={}'.format(
-                self.histo, self.from_symbol.upper(), self.to_symbol.upper(), self.exchange, self.limit)
+            url = 'https://min-api.cryptocompare.com/data/histo{}?fsym={}&tsym={}&limit={}'.format(
+                self.histo, self.from_symbol.upper(), self.to_symbol.upper(), self.limit)
             with yaspin(text='Downloading {}/{}'.format(self.from_symbol, self.to_symbol)) as sp:
                 response = requests.get(url, headers=headers)
                 sp.hide()
@@ -97,8 +99,8 @@ class Nostradamus:
                                 fillcolor='rgba(252,201,5,.05)')
         layout = go.Layout(plot_bgcolor='#2d2929',
                            paper_bgcolor='#2d2929',
-                           title='{} Price Forecast'.format(
-                               self.from_symbol),
+                           title='{} Price Forecast ({})'.format(
+                               self.from_symbol, self.changepoint_prior_scale),
                            font=dict(color='rgb(255, 255, 255)', size=17),
                            legend=dict(orientation="h"),
                            yaxis=dict(
