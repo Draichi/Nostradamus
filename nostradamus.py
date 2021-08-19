@@ -18,11 +18,10 @@ style = Style.from_dict({
 
 
 class Nostradamus:
-    def __init__(self, from_symbol, to_symbol, histo, exchange, limit, api_key):
+    def __init__(self, from_symbol, to_symbol, histo, limit, api_key):
         self.from_symbol = from_symbol
         self.to_symbol = to_symbol
         self.histo = histo
-        self.exchange = exchange
         self.limit = limit
         self.changepoint_prior_scale = None
         self.api_key = api_key
@@ -38,12 +37,12 @@ class Nostradamus:
         df_forecast = df_prophet.make_future_dataframe(
             periods=int(forecast_days))
         forecast = df_prophet.predict(df_forecast)
-        forecast.to_csv('datasets/forecast.csv')
+        forecast.to_csv('/tmp/nostradamus-forecast.csv')
         self.plot_datasets(forecast)
 
     def get_datasets(self):
-        dataset_path = 'datasets/{}_{}_{}.csv'.format(self.from_symbol +
-                                                      self.to_symbol, self.limit, self.histo)
+        dataset_path = '/tmp/nostradamus-{}_{}_{}.csv'.format(self.from_symbol +
+                                                              self.to_symbol, self.limit, self.histo)
         if not os.path.exists(dataset_path):
             headers = {'User-Agent': 'Mozilla/5.0',
                        'authorization': 'Apikey {}'.format(self.api_key)}

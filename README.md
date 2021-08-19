@@ -10,9 +10,12 @@ Nonlinear and linear regression model implementation [(paper)](https://peerj.com
 
 ## Setup
 
-You must get your free api key from cryptocompare.com
+You must get your free api key from cryptocompare.com and miniconda installed
 
 ```sh
+cp .env.example .env
+# Paste your cyptocompare api key on .env
+
 conda env create -f environment.yml
 
 conda activate nostradamus
@@ -20,13 +23,8 @@ conda activate nostradamus
 
 ## Running
 
-```python
-from nostradamus import Nostradamus
-
-env = Nostradamus(from_symbol='eth', to_symbol="USDT", histo="day",
-                  exchange="Binance", limit="250", api_key="xxx") # paste yout api key here
-
-env.prophet(changepoint_prior_scale=0.08, forecast_days=30)
+```sh
+python example_script.py
 ```
 
 ---
